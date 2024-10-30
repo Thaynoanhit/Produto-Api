@@ -18,7 +18,7 @@ cd Produto-Api
 ```
 ### 2. Configuração do Banco de Dados com Docker
 
-Dentro do diretório do projeto, use o **Docker Compose** para configurar e iniciar o banco de dados PostgreSQL.
+No diretório do projeto, utilize Docker Compose para configurar e iniciar o banco de dados PostgreSQL.
 
 #### Alterando as variáveis de ambiente
 
@@ -42,11 +42,11 @@ Agora, execute o comando abaixo para iniciar o container do PostgreSQL e aplicar
 docker-compose up -d
 ```
 
-Este comando iniciará o container PostgreSQL no background.
+Esse comando iniciará o container PostgreSQL em segundo plano.
 
 ### 3. Instalando Dependências
 
-Com o banco de dados em execução, instale as dependências do projeto Node.js. No diretório raiz do projeto, execute:
+Com o banco de dados em funcionamento, instale as dependências do projeto Node.js. No diretório raiz, execute:
 
 ```bash
 npm install
@@ -64,7 +64,7 @@ npm run dev
 
 ## Acessando a Aplicação
 
-Agora você pode acessar a API no navegador ou no Postman usando a URL:
+Você pode acessar a API no navegador ou no Postman usando a URL:
 
 ```
 http://localhost:3001/produtos/
@@ -76,9 +76,9 @@ http://localhost:3001/produtos/
 - **GET** `/produtos/` - Lista todos os produtos.
 - **GET** `/produtos/:id` - Obtém um produto pelo ID.
 - **PUT** `/produtos/:id` - Atualiza um produto pelo ID.
-- **DELETE** `/produtos/:id` - Soft delete de um produto.
+- **DELETE** `/produtos/:id` - Realiza um Soft delete de um produto.
 
-## Fechando o Ambiente
+## Encerrando o Ambiente
 
 Para parar e remover os containers e volumes criados pelo Docker Compose, execute:
 
@@ -86,4 +86,4 @@ Para parar e remover os containers e volumes criados pelo Docker Compose, execut
 docker-compose down -v
 ```
 
-Isso desligará e removerá os containers e volumes, mas manterá as imagens.
+Esse comando desligará e removerá os containers e volumes, mas as imagens permanecerão.
