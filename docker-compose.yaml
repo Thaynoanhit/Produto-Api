@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  dcs-postgres:
+    image: postgres:15.3-alpine
+    container_name: dcs-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    ports:
+      - 5234:5432
+
