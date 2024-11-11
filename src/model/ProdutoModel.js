@@ -31,7 +31,7 @@ class ProdutoModel {
 
   async findAll() {
     try {
-      const result = await this.pool.query(`SELECT * FROM produtos ORDER BY id ASC`);
+      const result = await this.pool.query(`SELECT * FROM produtos ORDER BY LOWER(TRIM(nome)) ASC`);
       return result.rows;
     } catch (error) {
       throw new Error(`Erro ao buscar produtos: ${error.message}`);
@@ -69,6 +69,18 @@ class ProdutoModel {
       return result.rows[0] || null;
     } catch (error) {
       throw new Error(`Erro ao deletar produto com ID ${id}: ${error.message}`);
+    }
+  }
+
+  async findByNameAndDescription(nome, descricao) {
+    try {
+      const result = await this.pool.query(
+        `SELECT * FROM produtos WHERE nome = $1 AND descricao = $2`,
+        [nome, descricao]
+      );
+      return result.rows[0] || null; 
+    } catch (error) {
+      throw new Error(`Erro ao buscar produto: ${error.message}`);
     }
   }
 }

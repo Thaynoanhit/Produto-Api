@@ -1,10 +1,18 @@
+
 import ProdutoModel from '../model/ProdutoModel.js';
 
 class ProdutoController {
   async create(req, res) {
     try {
+      const { nome, descricao } = req.body;
+
+      const produtoExistente = await ProdutoModel.findByNameAndDescription(nome, descricao);
+      if (produtoExistente) {
+        return res.status(400).json({ error: 'Produto já existe com o mesmo nome e descrição.' });
+      }
+
       const produto = await ProdutoModel.create(req.body);
-      return res.status(201).json(produto); // Retorna 201 ao criar com sucesso
+      return res.status(201).json(produto); 
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
